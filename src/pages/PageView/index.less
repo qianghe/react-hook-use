@@ -1,0 +1,62 @@
+@ConsoleBgColor:  rgba(0, 0, 0, 0.9);
+@keyframes blink {
+  0%, 100% {
+      background-color: transparent;
+  }
+  50% {
+      background-color: #F7C242; /* not #aaa because it's seem there is Google Chrome bug */
+  }
+}
+
+.page-view {
+  display: flex;
+  margin-top: 30px;
+  height: 300px;
+  max-height: 300px;
+  box-shadow: 0 0 20px 2px #eee;
+
+  ul {
+    flex: 3;
+    height: 100%;
+    font-size: 13px;
+    background-color: @ConsoleBgColor;
+    overflow-y: scroll;
+
+    li {
+      padding: 10px 0;
+      width: 70%;
+    }
+
+    li:first-child {
+      font-size: 14px;
+      font-weight: bold;
+      color: #BEC23F;
+    }
+
+    li:nth-of-type(2n) {
+      background-color: rgba(180, 129, 187, 0.5);
+      color: #fff;
+    }
+
+    li:nth-of-type(2n + 3) {
+      color: #828282;
+      font-style: italic
+    }
+  }
+
+  >div {
+    flex: 2;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 20px 5px;
+    border-left: 1px dotted #eeeeee;
+  }
+
+  .blink {
+    display: block;
+    width: 2px;
+    height: 14px;
+    animation: blink 1s infinite steps(1, start);
+  }
+}

@@ -1,24 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import HomeMenu from '@components/HomeMenu'
+import homeMenuConfig from '@components/HomeMenu/config.js'
+import { getRoutes } from './routes'
+import routes from './routes/config'
+import './App.less';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <HomeMenu config={homeMenuConfig} />
+      {getRoutes(routes)}
     </div>
   );
 }

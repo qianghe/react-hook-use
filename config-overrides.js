@@ -12,7 +12,8 @@ module.exports = override(
   addWebpackAlias({
     '@components': getPath('components'),
     '@pages': getPath('pages'),
-    '@hooks': getPath('hooks')
+    '@hooks': getPath('hooks'),
+    '@codepen': getPath('codepen')
   }),
   addBabelPlugins(
     ['import', { libraryName: 'antd', libraryDirectory: 'es', style: true }],

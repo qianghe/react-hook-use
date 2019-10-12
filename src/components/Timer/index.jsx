@@ -26,8 +26,9 @@ function Timer(props) {
     if (props.status === !PAGE_IS_VISIBLE) {
       clearTimeout(timer)
     }
-    return () => clearTimeout(timer)
+    return () => timer && clearTimeout(timer)
   }, [props.status, value])
+
 
   return (
     <div className="global-timer">

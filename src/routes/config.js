@@ -6,5 +6,5 @@ export default [{
   component: PageView
 }, {
   path: '/library/pageobserv',
-  component: loadable(() => import('@pages/PageObservable'))
+  component: loadable(() => import('@pages/IntersectionObserver'))
 }]

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import dayjs from 'dayjs'
 import PageVisibility from 'react-page-visibility';
 import HOCPage from '@components/HOCPage'
@@ -15,25 +15,18 @@ function Container() {
     '欢迎使用🎉：现在可以尝试切换到其他的tab页'
   ])
   const [status, setStatus] = useState('')
-  // 缓存需要执行的回到函数
-  const memoizedCallback = useCallback(
-    () => {
-      // 当前scroll-console是否滚动到了最底端
-      if (status === PAGE_IS_VISIBLE) {
-        const $container = $scrollContainer.current
-        const { clientHeight, scrollHeight } = $container
-        $container.scrollTop = scrollHeight - clientHeight
-      }
-    }, 
-    [status],
-  )
+  const controlScroll = () => {
+    const $container = $scrollContainer.current
+    const { clientHeight, scrollHeight } = $container
+    $container.scrollTop = scrollHeight - clientHeight
+  }
   const handleVisibilityChange = isVisible => {
     const currentTime = dayjs().format('YYYY-MM-DD a hh:mm:ss')
     const visibleLogText = isVisible === PAGE_IS_VISIBLE ? 
       `o((>ω< ))o ～～ 访问页面的时间点是：${currentTime}` : `(￣(oo)￣)ﾉ ～～离开页面的时间点是：${currentTime}`
     setLog(logs.concat(visibleLogText))
     setStatus(isVisible)
-    memoizedCallback()
+    isVisible && controlScroll()
   }
   return (
     <PageVisibility onChange={handleVisibilityChange}>
